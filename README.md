@@ -29,5 +29,4 @@ Todos no bloco `CONFIG` dentro do `index.html`:
 - `dataFesta` — data/hora (recalcula contagem, carimbo e rodapé)
 - `linkFormPresenca` — Google Forms de confirmação de presença
 - `linkMapa` — botão "Ver no mapa" + QR code
-- `linkPresentes` — lista de presentes (botão fica inacessível enquanto vazio)
-- `musicaId` — vídeo do YouTube
+- `musicaSrc` / `musicaNome` — música em MP3 (pasta `audio/`)

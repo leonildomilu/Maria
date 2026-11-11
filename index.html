@@ -120,13 +120,12 @@ a{color:inherit;text-decoration:none}
 .section-number{font:7rem var(--serif);color:#b77b881a;position:absolute;top:6rem;left:6vw}
 .celebration-copy{text-align:center;max-width:650px}
 .celebration-copy .script{margin:0;font-size:2.5rem}
-.celebration h2,.where-copy h2,.gift-section h2{font:clamp(2.7rem,5.3vw,5rem)/1.03 var(--serif);color:var(--wine);margin:.4rem 0 1.8rem;font-weight:400}
+.celebration h2,.where-copy h2{font:clamp(2.7rem,5.3vw,5rem)/1.03 var(--serif);color:var(--wine);margin:.4rem 0 1.8rem;font-weight:400}
 .celebration-copy>p:not(.script){max-width:540px;margin:auto;font-size:.88rem;line-height:1.9}
 .ornament{color:var(--gold);margin-top:2rem;display:block}
 .celebration-flower{width:330px;color:var(--blush);position:absolute;bottom:-120px;right:-50px;transform:rotate(-20deg)}
 
 /* ══════════ GALERIA — removida a pedido do cliente ══════════ */
-.gift-section h2 em{color:var(--rose);font-style:italic}
 
 /* ══════════ DATA E LOCAL ══════════ */
 .where-section{background:linear-gradient(rgba(255,250,247,.5),rgba(255,250,247,.5));position:relative;grid-template-columns:.7fr 1.1fr .7fr;align-items:center;gap:6vw;padding:9rem 8vw;display:grid}
@@ -156,18 +155,6 @@ a{color:inherit;text-decoration:none}
 .button--light{color:var(--wine);background:#fffaf6}
 .invite-notice{text-transform:uppercase;letter-spacing:.14em;color:#dcbac1;justify-content:center;align-items:center;gap:1rem;margin-top:3.5rem;font-size:.52rem;display:flex}
 .invite-notice i{background:#ffffff40;width:1px;height:22px}
-
-/* ══════════ PRESENTES ══════════ */
-.gift-section{text-align:center;max-width:850px;margin:auto;padding:9rem 2rem;position:relative}
-.gift-icon{border:1px solid var(--gold);width:60px;height:60px;color:var(--gold);border-radius:50%;place-items:center;margin:0 auto 1.5rem;display:grid}
-.gift-icon svg{width:22px}
-.gift-section>.eyebrow{color:var(--rose)}
-.gift-section h2{margin:1.2rem 0}
-.gift-section>p{max-width:590px;margin:0 auto 2.3rem;font-size:.8rem;line-height:1.9}
-.button--outline{border-color:var(--wine);color:var(--wine)}
-.button--outline:hover{background:var(--wine);color:#fff}
-/* ✏️ botão visível, mas sem link ainda (fica apagado) */
-.button--aguardando{opacity:.5;cursor:not-allowed;pointer-events:none}
 
 /* ══════════ RODAPÉ ══════════ */
 footer{text-align:center;color:var(--wine);background:linear-gradient(rgba(255,250,247,.45),rgba(255,250,247,.45));padding:8rem 2rem 5rem;position:relative;overflow:hidden}
@@ -213,8 +200,6 @@ footer small{letter-spacing:.25em;margin-top:2rem;font-size:.57rem;display:block
 .celebration .creature--flor-l{bottom:-110px;right:-44px}
 .where-section .creature--joaninha{top:15%;left:4.5%}
 .where-section .creature--flor-s{bottom:-34px;right:-26px}
-.gift-section .creature--borboleta{top:9%;left:5%}
-.gift-section .creature--joaninha{bottom:12%;right:7%}
 footer .creature--flor-l{bottom:-100px;right:-70px}
 footer .creature--abelha{top:16%;left:6%;transform:scaleX(-1)}
 footer .creature--joaninha{top:44%;right:9%}
@@ -237,8 +222,6 @@ footer .creature--joaninha{top:44%;right:9%}
   .celebration .creature--flor-l{bottom:-60px;right:-34px}
   .where-section .creature--joaninha{top:8%;left:4%}
   .where-section .creature--flor-s{bottom:-24px;right:-18px}
-  .gift-section .creature--borboleta{top:6%;left:4%}
-  .gift-section .creature--joaninha{bottom:9%;right:5%}
   footer .creature--flor-l{bottom:-60px;right:-40px}
   footer .creature--abelha{top:12%;left:4%}
   footer .creature--joaninha{top:38%;right:6%}
@@ -284,7 +267,6 @@ footer .creature--joaninha{top:44%;right:9%}
   .rsvp-section{padding:7rem 1.2rem}
   .invite-notice{flex-direction:column}
   .invite-notice i{width:35px;height:1px}
-  .gift-section{padding:7rem 1.4rem}
   .opening h1{font-size:3.6rem}
   .opening-flower{width:220px}
   .opening-card{padding:1rem}
@@ -526,22 +508,6 @@ footer .creature--joaninha{top:44%;right:9%}
         <span>Convite individual</span><i></i><span>Não compartilhar com terceiros</span>
       </div>
     </section>
-
-    <!-- ══════════ PRESENTES ══════════ -->
-    <section class="gift-section" id="presentes" data-reveal>
-      <svg class="creature creature--borboleta" aria-hidden="true"><use href="#borboleta"/></svg>
-      <svg class="creature creature--joaninha" aria-hidden="true"><use href="#joaninha"/></svg>
-      <div class="gift-icon">
-        <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 7v14"/><path d="M20 11v8a2 2 0 0 1-2 2H6a2 2 0 0 1-2-2v-8"/><path d="M7.5 7a1 1 0 0 1 0-5A4.8 8 0 0 1 12 7a4.8 8 0 0 1 4.5-5 1 1 0 0 1 0 5"/><rect x="3" y="7" width="18" height="4" rx="1"/></svg>
-      </div>
-      <span class="eyebrow">com carinho, um presente</span>
-      <h2>O melhor presente<br><em>é ter você comigo.</em></h2>
-      <p>Mais importante do que qualquer presente é ter você comigo neste momento tão especial. Mas, se desejar me presentear, preparei uma lista para facilitar.</p>
-      <!-- ✏️ sem link por enquanto (inacessível): quando a lista de presentes estiver pronta,
-           troque <button ...> ... </button> por <a class="button button--outline" href="SEU_LINK" target="_blank"> ... </a>
-           (ou preencha CONFIG.linkPresentes e descomente a linha no script) -->
-      <button class="button button--outline button--aguardando" id="btn-presentes" type="button" aria-disabled="true">Ver lista de presentes</button>
-    </section>
   </main>
 
   <!-- ══════════ RODAPÉ ══════════ -->
@@ -583,10 +549,6 @@ const CONFIG = {
   // Link do mapa (Google Maps) — alimenta o botão "Ver no mapa" e o QR CODE
   linkMapa: "https://maps.app.goo.gl/SmFRwkeV3gq4eMnj6",
 
-  // ✏️ Lista de presentes: cole o link aqui quando estiver pronta
-  // (enquanto vazio, o botão "Ver lista de presentes" fica inacessível)
-  linkPresentes: "",
-
   // ✏️ Música do convite (arquivo no site — pasta "audio/")
   // Para trocar: substitua o arquivo em audio/ e atualize o nome abaixo
   musicaSrc: "audio/flor.mp3",
@@ -623,18 +585,6 @@ if (CONFIG.linkFormPresenca){
   a.rel = "noreferrer";
   a.innerHTML = rsvp.innerHTML;
   rsvp.replaceWith(a);
-}
-
-/* ── botão "Ver lista de presentes": ganha o link quando CONFIG.linkPresentes for preenchido ── */
-if (CONFIG.linkPresentes){
-  const gp = $("btn-presentes");
-  const a = document.createElement("a");
-  a.className = "button button--outline";
-  a.href = CONFIG.linkPresentes;
-  a.target = "_blank";
-  a.rel = "noreferrer";
-  a.innerHTML = gp.innerHTML;
-  gp.replaceWith(a);
 }
 $("btn-musica").setAttribute("aria-label", `Tocar ${CONFIG.musicaNome}`);
 
