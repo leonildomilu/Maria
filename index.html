@@ -1,0 +1,739 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<!-- ✏️ TÍTULO: troque o nome -->
+<title>Maria Flor | 1 Aninho</title>
+<!-- ✏️ DESCRIÇÃO: aparece quando o link é compartilhado -->
+<meta name="description" content="Convite para celebrar o 1 Aninho de Maria Flor, em 13 de dezembro de 2026.">
+<!-- ✏️ COMPARTILHAMENTO: troque img/share-preview.jpg por uma imagem 1200x630 -->
+<meta property="og:title" content="Maria Flor | 1 Aninho">
+<meta property="og:description" content="Convite para celebrar o 1 Aninho de Maria Flor, em 13 de dezembro de 2026.">
+<meta property="og:type" content="website">
+<meta property="og:locale" content="pt_BR">
+<meta name="twitter:card" content="summary_large_image">
+<link rel="icon" href="favicon.svg" type="image/svg+xml">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Italiana&family=Montserrat:wght@300;400;500;600&family=Parisienne&display=swap" rel="stylesheet">
+<style>
+/* ════════════════════════════════════════════════════════════
+   ✏️ PALETA DO CONVIDE — mude aqui e todo o site re-tematiza
+   ════════════════════════════════════════════════════════════ */
+:root{
+  --wine:#663946;   /* vinho — fundos fortes, títulos, botões */
+  --rose:#b77b88;   /* rosé  — palavras em destaque, script */
+  --blush:#ead1d4;  /* blush — detalhes suaves, fundos de seção */
+  --powder:#f5e6e5; /* pó de rosa — reservado */
+  --paper:#fffaf5;  /* papel — fundo principal (creme) */
+  --ink:#443236;    /* tinta — cor do texto */
+  --gold:#b99867;   /* dourado — bordas, ornamentos, datas */
+  --serif:"Italiana",serif;      /* fonte dos títulos */
+  --sans:"Montserrat",sans-serif;/* fonte do corpo (300/400/500/600) */
+  --script:"Parisienne",cursive; /* fonte caligráfica */
+}
+*{box-sizing:border-box}
+html{scroll-behavior:smooth;scroll-padding-top:72px}
+body{background:var(--paper);color:var(--ink);font-family:var(--sans);margin:0;font-weight:300;overflow-x:hidden}
+button,a{font:inherit}
+button{cursor:pointer}
+a{color:inherit;text-decoration:none}
+[hidden]{display:none!important}
+
+/* ── entrada (o site "acorda" quando o convite é aberto) ── */
+.site{opacity:.001;transition:opacity 1s .3s}
+.site--visible{opacity:1}
+
+/* ── rótulos pequenos em caixa alta ── */
+.eyebrow{letter-spacing:.32em;text-transform:uppercase;font-size:.65rem;font-weight:600}
+.script{font-family:var(--script);color:var(--rose)}
+
+/* ── botões ── */
+.button{text-transform:uppercase;letter-spacing:.17em;border:1px solid transparent;justify-content:center;align-items:center;gap:.85rem;min-height:52px;padding:0 1.7rem;font-size:.64rem;font-weight:600;transition:transform .25s,background .25s,color .25s;display:inline-flex}
+.button:hover{transform:translateY(-2px)}
+.button:focus-visible,a:focus-visible,button:focus-visible{outline:2px solid var(--gold);outline-offset:4px}
+.button svg{width:14px}
+
+/* ── flor botânica (desenho usado em toda a página) ── */
+.botanical{fill:none;stroke:currentColor;stroke-width:1.1px;overflow:visible}
+
+/* ── revelação suave ao rolar a página ── */
+[data-reveal]{opacity:0;transition:opacity .9s,transform .9s;transform:translateY(26px)}
+[data-reveal].revealed{opacity:1;transform:none}
+
+/* ══════════ TELA DE ABERTURA ══════════ */
+.opening{z-index:1000;background:radial-gradient(circle at 50% 40%,#fffaf7 0,#f9eeee 46%,#ead3d6);place-items:center;transition:opacity 1s,visibility 1s;display:grid;position:fixed;inset:0;overflow:hidden}
+.opening:after{content:"";pointer-events:none;border:1px solid #b9986773;position:absolute;inset:18px}
+.opening--away{opacity:0;visibility:hidden}
+.opening-card{text-align:center;z-index:2;animation:1.4s both opening-in;position:relative}
+.opening-card .eyebrow{color:#91616d}
+.monogram{border:1px solid var(--gold);width:62px;height:62px;font-family:var(--serif);color:var(--wine);border-radius:50%;place-items:center;margin:1.6rem auto 1rem;font-size:1.25rem;display:grid;position:relative}
+.monogram:before,.monogram:after{content:"";background:#b99867b3;width:50px;height:1px;position:absolute;top:50%}
+.monogram:before{right:75px}
+.monogram:after{left:75px}
+.opening h1{font:clamp(3.4rem,11vw,7.4rem)/.85 var(--serif);color:var(--wine);margin:.35rem 0;font-weight:400}
+.fifteen{text-transform:uppercase;letter-spacing:.38em;color:var(--rose);justify-content:center;align-items:center;gap:.65rem;font-size:.68rem;display:flex}
+.fifteen span{font:3.2rem/1 var(--serif);letter-spacing:0;color:var(--gold)}
+.opening-card>p{font:italic 1rem/1.7 var(--serif);letter-spacing:.05em;margin:1.2rem 0 1.8rem}
+.button--primary{background:var(--wine);color:#fff;border-color:var(--wine)}
+.opening-flower{color:#bd8994;opacity:.35;width:min(32vw,340px);position:absolute}
+.opening-flower--left{bottom:-70px;left:-4vw;transform:rotate(12deg)}
+.opening-flower--right{top:-60px;right:-4vw;transform:rotate(192deg)}
+.petals i{top:-10%;left:calc(var(--i) * 11%);opacity:.4;width:9px;height:15px;animation:fall calc(9s + var(--i)*.45s) linear infinite;animation-delay:calc(var(--i)*-.9s);background:#d8a9b2;border-radius:100% 0;position:absolute}
+
+/* ══════════ NAVEGAÇÃO ══════════ */
+.nav-wrap{z-index:100;-webkit-backdrop-filter:blur(14px);backdrop-filter:blur(14px);background:#fffaf5e0;border-bottom:1px solid #6639461a;justify-content:space-between;align-items:center;height:68px;padding:0 clamp(1rem,4vw,4rem);display:flex;position:fixed;top:0;left:0;right:0}
+.nav-mark{font:1.25rem var(--serif);border:1px solid var(--gold);border-radius:50%;place-items:center;width:38px;height:38px;display:grid}
+.nav-wrap nav{gap:2.2rem;display:flex}
+.nav-wrap nav a{text-transform:uppercase;letter-spacing:.16em;font-size:.59rem;font-weight:500}
+.nav-toggle{color:var(--wine);background:transparent;border:0;display:none}
+
+/* ══════════ HERO (nome + foto) ══════════ */
+.hero{background:linear-gradient(105deg,#fffaf6 0 53%,#efdadd 53%);grid-template-columns:.86fr 1.14fr;align-items:center;gap:7vw;min-height:100svh;padding:110px max(6vw,2rem) 55px;display:grid;position:relative;overflow:hidden}
+.hero-copy{z-index:2;justify-self:end;position:relative}
+.hero-copy>.eyebrow{color:var(--rose)}
+.hero-copy>.script{margin:1.1rem 0 -1rem;font-size:2.2rem}
+.hero h2{font:clamp(4.5rem,9vw,9rem)/.72 var(--serif);color:var(--wine);letter-spacing:-.04em;margin:1.4rem 0 2.2rem;font-weight:400}
+.hero h2 em{color:var(--rose);margin-left:1.5vw;font-style:italic}
+.hero-rule{background:#b9986799;width:100%;height:1px;margin:0 0 1.7rem;position:relative}
+.hero-rule span{color:var(--gold);font:1.2rem var(--serif);text-transform:uppercase;background:#fffaf6;padding-left:1rem;position:absolute;top:50%;right:0;transform:translateY(-50%)}
+.hero-quote{font:italic 1rem/1.55 var(--serif);letter-spacing:.04em}
+.scroll-hint{letter-spacing:.14em;text-transform:uppercase;align-items:center;gap:.4rem;margin-top:3rem;font-size:.58rem;display:flex}
+.scroll-hint svg{width:14px}
+.hero-photo-wrap{justify-self:start;width:min(39vw,520px);position:relative}
+.hero-photo{background:#fff;border:1px solid #b99867b3;padding:12px;transform:rotate(1.6deg);box-shadow:0 30px 70px #4d2a332e}
+.hero-photo img{object-fit:cover;object-position:center 28%;width:100%;height:min(68vh,700px);display:block}
+.photo-caption{text-align:center;font:1.05rem var(--script);color:var(--wine);margin-top:1.2rem;display:block}
+.photo-year{letter-spacing:.18em;text-transform:uppercase;writing-mode:vertical-rl;color:var(--wine);font-size:.55rem;position:absolute;bottom:19%;right:-70px}
+.photo-year strong{font-family:var(--serif);color:var(--gold);font-weight:400}
+.hero-botanical{width:280px;color:var(--blush);position:absolute;bottom:-90px;left:-60px;transform:rotate(24deg)}
+
+/* ══════════ CONTAGEM REGRESSIVA ══════════ */
+.countdown-section{background:var(--wine);color:#fff;justify-content:center;align-items:center;gap:6vw;padding:2.1rem 6vw;display:flex}
+.countdown-section>.eyebrow{color:#dcbac1;writing-mode:vertical-rl}
+.countdown{grid-template-columns:repeat(4,1fr);gap:clamp(1.5rem,6vw,6rem);display:grid}
+.countdown div{text-align:center;position:relative}
+.countdown div:not(:last-child):after{content:"";background:#fff3;width:1px;height:28px;position:absolute;top:18px;right:calc(-.75rem - 3vw)}
+.countdown strong{font:clamp(2rem,5vw,4.1rem) var(--serif);font-weight:400;display:block}
+.countdown span{text-transform:uppercase;letter-spacing:.2em;color:#ddbdc4;margin-top:.3rem;font-size:.54rem;display:block}
+.today{font:2rem var(--serif)}
+
+/* ══════════ "VAMOS CELEBRAR" (papel com textura) ══════════ */
+.paper-section{min-height:600px;padding:9rem 10vw;position:relative;overflow:hidden}
+.celebration{background-image:linear-gradient(#fffaf5f0,#fffaf5f0),url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='100' height='100'%3E%3Cfilter id='n'%3E%3CfeTurbulence baseFrequency='.8' numOctaves='3' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)' opacity='.08'/%3E%3C/svg%3E");place-items:center;display:grid}
+.section-number{font:7rem var(--serif);color:#b77b881a;position:absolute;top:6rem;left:6vw}
+.celebration-copy{text-align:center;max-width:650px}
+.celebration-copy .script{margin:0;font-size:2.5rem}
+.celebration h2,.section-heading h2,.where-copy h2,.dress-card h2,.gift-section h2{font:clamp(2.7rem,5.3vw,5rem)/1.03 var(--serif);color:var(--wine);margin:.4rem 0 1.8rem;font-weight:400}
+.celebration-copy>p:not(.script){max-width:540px;margin:auto;font-size:.88rem;line-height:1.9}
+.ornament{color:var(--gold);margin-top:2rem;display:block}
+.celebration-flower{width:330px;color:var(--blush);position:absolute;bottom:-120px;right:-50px;transform:rotate(-20deg)}
+
+/* ══════════ GALERIA (fotografias) ══════════ */
+.gallery-section{background:#f1dfe1;padding:8rem 8vw 10rem;position:relative}
+.section-heading{text-align:center;max-width:620px;margin:0 auto 5rem}
+.section-heading .eyebrow{color:var(--rose)}
+.section-heading h2 em,.where-copy h2 em,.gift-section h2 em{color:var(--rose);font-style:italic}
+.section-heading p{max-width:460px;margin:auto;font-size:.8rem;line-height:1.8}
+.gallery{grid-template-rows:auto auto;grid-template-columns:1.05fr .8fr 1fr;gap:3rem;max-width:1080px;margin:auto;display:grid}
+.gallery-card{color:var(--ink);background:#fffaf6;border:0;padding:10px 10px 20px;transition:transform .35s;box-shadow:0 15px 35px #5a323d1f}
+.gallery-card:hover{transform:rotate(0)translateY(-7px)!important}
+.photo-inner{display:block;position:relative;overflow:hidden}
+.photo-inner img{width:100%;height:auto;display:block}
+.photo-inner svg{opacity:0;background:#fffaf6d9;width:32px;height:32px;padding:7px;transition:opacity .25s;position:absolute;bottom:10px;right:10px}
+.gallery-card:hover svg{opacity:1}
+.gallery-note{font:1.05rem var(--script);margin-top:.7rem;display:block}
+.gallery-card--1{grid-row:1/3;align-self:center;transform:rotate(-2deg)}
+.gallery-card--2{margin-top:3rem;transform:rotate(2.5deg)}
+.gallery-card--3{grid-row:1/3;align-self:center;transform:rotate(1.5deg)}
+.gallery-card--4{transform:rotate(-3deg)}
+
+/* ══════════ DATA E LOCAL ══════════ */
+.where-section{background:var(--paper);grid-template-columns:.7fr 1.1fr .7fr;align-items:center;gap:6vw;padding:9rem 8vw;display:grid}
+.date-stamp{text-align:center;border:1px solid var(--gold);padding:2.7rem 1rem;position:relative}
+.date-stamp:after{content:"";border:1px solid #b9986759;position:absolute;inset:7px}
+.date-stamp span{text-transform:uppercase;letter-spacing:.2em;font-size:.58rem;display:block}
+.date-stamp strong{font:6rem/1 var(--serif);color:var(--wine);margin:.5rem;font-weight:400;display:block}
+.where-copy>.eyebrow{color:var(--rose)}
+.where-copy h2{margin:.7rem 0 2rem}
+.event-detail{gap:1rem;margin:1.2rem 0;display:flex}
+.event-detail svg{width:20px;color:var(--gold);flex:none}
+.event-detail p{margin:0;font-size:.75rem;line-height:1.7}
+.event-detail strong{text-transform:uppercase;letter-spacing:.1em;font-size:.68rem}
+.button--dark{background:var(--wine);color:#fff;margin-top:1.2rem}
+.qr-card{text-align:center}
+.qr-frame{border:1px solid var(--gold);background:#fff;padding:14px}
+.qr-frame img{width:100%;display:block}
+.qr-card p{font:1rem/1.4 var(--script);color:var(--rose)}
+
+/* ══════════ DRESS CODE (fundo com foto) ══════════ */
+.dress-section{background:linear-gradient(#663946e0,#663946e0); /* ✏️ quando a foto2.jpg chegar, devolva: ,url(img/foto2.jpg) 50% 23%/cover fixed */place-items:center;min-height:760px;padding:7rem 1rem;display:grid;position:relative;overflow:hidden}
+.dress-card{text-align:center;border:1px solid var(--gold);background:#fffaf5f2;max-width:690px;padding:5.5rem clamp(2rem,7vw,6rem);position:relative}
+.dress-card:after{content:"";pointer-events:none;border:1px solid #b9986766;position:absolute;inset:10px}
+.dress-card>.eyebrow{color:var(--rose)}
+.dress-card .script{margin:1rem 0 -.5rem;font-size:3rem}
+.dress-card h2{font-size:clamp(2.3rem,4vw,3.5rem)}
+.dress-card>p{font-size:.78rem;line-height:1.9}
+.pink-note{border-top:1px solid var(--blush);text-align:left;align-items:center;gap:1rem;margin-top:2rem;padding-top:1.5rem;display:flex}
+.pink-note p{margin:0;font-size:.66rem;line-height:1.65}
+.swatch{width:33px;height:33px;box-shadow:0 0 0 5px #fff,0 0 0 6px var(--blush);background:linear-gradient(135deg,#f4d8dd 50%,#c78b98 50%);border-radius:50%;flex:none}
+.dress-flower{color:#d5aeb6;z-index:1;opacity:.45;width:330px;position:absolute;bottom:-70px;left:-70px}
+
+/* ══════════ CONFIRMAÇÃO DE PRESENÇA ══════════ */
+.rsvp-section{background:var(--wine);color:#fff;text-align:center;padding:9rem 2rem}
+.rsvp-section>.eyebrow{color:#dcbac1}
+.rsvp-section>.script{margin:1rem 0;font-size:clamp(2.7rem,6vw,5rem)}
+.rsvp-section h2{font:clamp(1.15rem,2vw,1.5rem)/1.6 var(--serif);letter-spacing:.04em;margin-bottom:2.2rem;font-weight:400}
+.button--light{color:var(--wine);background:#fffaf6}
+.invite-notice{text-transform:uppercase;letter-spacing:.14em;color:#dcbac1;justify-content:center;align-items:center;gap:1rem;margin-top:3.5rem;font-size:.52rem;display:flex}
+.invite-notice i{background:#ffffff40;width:1px;height:22px}
+
+/* ══════════ PRESENTES ══════════ */
+.gift-section{text-align:center;max-width:850px;margin:auto;padding:9rem 2rem}
+.gift-icon{border:1px solid var(--gold);width:60px;height:60px;color:var(--gold);border-radius:50%;place-items:center;margin:0 auto 1.5rem;display:grid}
+.gift-icon svg{width:22px}
+.gift-section>.eyebrow{color:var(--rose)}
+.gift-section h2{margin:1.2rem 0}
+.gift-section>p{max-width:590px;margin:0 auto 2.3rem;font-size:.8rem;line-height:1.9}
+.button--outline{border-color:var(--wine);color:var(--wine)}
+.button--outline:hover{background:var(--wine);color:#fff}
+/* ✏️ botão visível, mas sem link ainda (fica apagado) */
+.button--aguardando{opacity:.5;cursor:not-allowed;pointer-events:none}
+
+/* ══════════ RODAPÉ ══════════ */
+footer{text-align:center;color:var(--wine);background:#ead2d5;padding:8rem 2rem 5rem;position:relative;overflow:hidden}
+footer>.eyebrow{color:#986875}
+.footer-name{font:clamp(3.4rem,8vw,6.5rem)/1 var(--script);margin:1rem 0 0}
+.footer-age{font:1.4rem var(--serif);text-transform:uppercase;letter-spacing:.25em}
+.footer-rule{background:var(--gold);width:100px;height:1px;margin:2rem auto}
+footer>p:not(.footer-name):not(.footer-age){font:italic 1rem/1.6 var(--serif)}
+footer small{letter-spacing:.25em;margin-top:2rem;font-size:.57rem;display:block}
+.footer-flower{color:#c08c96;opacity:.5;width:310px;position:absolute;bottom:-100px;right:-70px}
+
+/* ══════════ BOTÃO DE MÚSICA ══════════ */
+.music-button{z-index:90;-webkit-backdrop-filter:blur(8px);backdrop-filter:blur(8px);color:var(--wine);background:#fffaf5eb;border:1px solid #b99867b3;border-radius:30px;align-items:center;gap:8px;height:46px;padding:0 14px;display:flex;position:fixed;bottom:18px;right:18px;box-shadow:0 8px 25px #502a3426}
+.music-button svg{width:16px}
+.music-button span{text-transform:uppercase;letter-spacing:.12em;font-size:.52rem}
+.music-button.playing svg{animation:1.5s infinite pulse}
+
+/* ══════════ LIGHTBOX (foto ampliada) ══════════ */
+.lightbox{z-index:1200;background:#2d1b20ed;place-items:center;padding:3rem 1rem;display:grid;position:fixed;inset:0}
+.lightbox img{object-fit:contain;max-width:min(900px,90vw);max-height:82vh;box-shadow:0 15px 60px #1f1115}
+.lightbox button{color:#fff;background:transparent;border:1px solid #fff6;place-items:center;width:44px;height:44px;display:grid;position:absolute;top:20px;right:20px}
+.lightbox p{color:#fff;font:1.2rem var(--script);position:absolute;bottom:1rem}
+/* ✏️ espaços reservados para as fotos (somem quando o <img> entra no lugar) */
+.foto-placeholder{display:flex;flex-direction:column;align-items:center;justify-content:center;gap:.6rem;aspect-ratio:3/4;width:100%;border:1px dashed #b99867b3;background:#fffaf6;text-align:center;padding:1rem}
+.foto-placeholder strong{font:1.7rem var(--serif);letter-spacing:.08em;color:var(--gold)}
+.foto-placeholder small{font-size:.55rem;letter-spacing:.14em;text-transform:uppercase;color:var(--rose)}
+
+/* ══════════ ANIMAÇÕES ══════════ */
+@keyframes opening-in{0%{opacity:0;transform:translateY(18px)}to{opacity:1;transform:none}}
+@keyframes fall{to{transform:translate(80px,120vh)rotate(520deg)}}
+@keyframes pulse{50%{opacity:.5}}
+
+/* ══════════ CELULAR (até 760px) ══════════ */
+@media(max-width:760px){
+  .nav-toggle{place-items:center;display:grid}
+  .nav-wrap nav{opacity:0;visibility:hidden;background:#fffaf6;flex-direction:column;gap:0;padding:.7rem;transition:all .25s;position:absolute;top:60px;left:12px;right:12px;transform:translateY(-10px);box-shadow:0 18px 50px #5a323d26}
+  .nav-wrap nav.nav-open{opacity:1;visibility:visible;transform:none}
+  .nav-wrap nav a{border-bottom:1px solid #f0dfe1;padding:1rem}
+  .hero{background:linear-gradient(#fffaf6 0 46%,#efdadd 46%);flex-direction:column;gap:3rem;min-height:auto;padding:115px 1.2rem 4rem;display:flex}
+  .hero-copy{text-align:center;align-self:stretch}
+  .hero-copy>.script{font-size:1.8rem}
+  .hero h2{font-size:4.9rem}
+  .hero h2 em{margin-left:0}
+  .hero-rule span{background:#fffaf6}
+  .hero-quote{font-size:.88rem}
+  .scroll-hint{justify-content:center;margin-top:2rem}
+  .hero-photo-wrap{align-self:center;width:min(82vw,420px)}
+  .hero-photo img{aspect-ratio:3/4;object-fit:cover;height:auto}
+  .photo-year{display:none}
+  .countdown-section{padding:2rem 1rem;display:block}
+  .countdown-section>.eyebrow{writing-mode:initial;text-align:center;margin-bottom:1.4rem;display:block}
+  .countdown{gap:.7rem}
+  .countdown div:not(:last-child):after{right:-.35rem}
+  .countdown strong{font-size:2rem}
+  .countdown span{letter-spacing:.1em;font-size:.45rem}
+  .paper-section{min-height:560px;padding:7rem 1.5rem}
+  .celebration h2{font-size:2.7rem}
+  .section-number{font-size:4rem}
+  .gallery-section{padding:7rem 1rem}
+  .section-heading{margin-bottom:3rem}
+  .gallery{grid-template-columns:1fr 1fr;align-items:start;gap:1rem}
+  .gallery-card{padding:7px 7px 15px}
+  .gallery-card--1,.gallery-card--2,.gallery-card--3,.gallery-card--4{grid-row:auto;align-self:auto;margin:0}
+  .gallery-card--1{grid-column:1/3;margin:0 13vw}
+  .gallery-card--4{margin-top:-5rem}
+  .gallery-note{font-size:.83rem}
+  .where-section{grid-template-columns:1fr;gap:3.5rem;padding:7rem 1.4rem}
+  .date-stamp{width:100%;max-width:230px;margin:auto}
+  .where-copy{text-align:center}
+  .event-detail{text-align:left;max-width:280px;margin:1.2rem auto}
+  .qr-card{max-width:220px;margin:auto}
+  .dress-section{background-attachment:scroll}
+  .dress-card{padding:4.5rem 1.7rem}
+  .dress-card .script{font-size:2.5rem}
+  .rsvp-section{padding:7rem 1.2rem}
+  .invite-notice{flex-direction:column}
+  .invite-notice i{width:35px;height:1px}
+  .gift-section{padding:7rem 1.4rem}
+  .opening h1{font-size:3.6rem}
+  .opening-flower{width:220px}
+  .opening-card{padding:1rem}
+  .button{min-height:54px}
+  .lightbox p{display:none}
+}
+@media(prefers-reduced-motion:reduce){
+  *,*::before,*::after{scroll-behavior:auto!important;transition-duration:.01ms!important;animation:none!important}
+}
+</style>
+</head>
+<body>
+
+<!-- Flor botânica reutilizável (definida uma vez, usada em toda a página) -->
+<svg width="0" height="0" style="position:absolute" aria-hidden="true">
+  <symbol id="flor" viewBox="0 0 240 320">
+    <path d="M18 310C51 232 86 158 183 35M73 219c-38-6-56-30-58-63 35-1 62 17 69 49M117 142c-3-41 13-72 49-91 12 40-2 72-39 95M147 92c31-21 59-21 84-2-24 27-53 33-85 14M55 248c12-37 35-57 70-61-2 38-22 62-59 70"/>
+    <g fill="currentColor" stroke="none" opacity=".38">
+      <circle cx="184" cy="34" r="13"/><circle cx="205" cy="35" r="13"/><circle cx="195" cy="53" r="13"/><circle cx="177" cy="53" r="13"/><circle cx="191" cy="43" r="8"/>
+    </g>
+  </symbol>
+</svg>
+
+<!-- ══════════ TELA DE ABERTURA ══════════ -->
+<div class="opening" id="opening" aria-hidden="false">
+  <div class="petals" aria-hidden="true">
+    <i style="--i:0"></i><i style="--i:1"></i><i style="--i:2"></i><i style="--i:3"></i><i style="--i:4"></i>
+    <i style="--i:5"></i><i style="--i:6"></i><i style="--i:7"></i><i style="--i:8"></i><i style="--i:9"></i>
+  </div>
+  <svg class="botanical opening-flower opening-flower--left" aria-hidden="true"><use href="#flor"/></svg>
+  <svg class="botanical opening-flower opening-flower--right" aria-hidden="true"><use href="#flor"/></svg>
+  <div class="opening-card">
+    <!-- ✏️ frase de abertura -->
+    <span class="eyebrow">uma noite para florescer</span>
+    <!-- ✏️ iniciais (monograma) -->
+    <div class="monogram" id="monogram">MF</div>
+    <!-- ✏️ nome completo -->
+    <h1>Maria Flor</h1>
+    <div class="fifteen"><span>1</span> Aninho</div>
+    <p>Uma noite para lembrar,<br>um momento para guardar para sempre</p>
+    <button class="button button--primary" id="btn-abrir">Abrir convite <span>→</span></button>
+  </div>
+</div>
+
+<!-- ══════════ SITE ══════════ -->
+<div class="site" id="site">
+
+  <!-- navegação -->
+  <header class="nav-wrap">
+    <a class="nav-mark" href="#inicio" aria-label="Voltar ao início" id="nav-mark">MF</a>
+    <button class="nav-toggle" id="nav-toggle" aria-label="Abrir menu" aria-expanded="false">
+      <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M4 5h16"/><path d="M4 12h16"/><path d="M4 19h16"/></svg>
+    </button>
+    <nav id="nav" aria-label="Navegação principal">
+      <a href="#inicio">Início</a>
+      <a href="#fotos">Fotos</a>
+      <a href="#local">Data e local</a>
+      <a href="#dress-code">Vestuário</a>
+      <a href="#rsvp">Presença</a>
+      <a href="#presentes">Presentes</a>
+    </nav>
+  </header>
+
+  <main>
+    <!-- ══════════ HERO ══════════ -->
+    <section class="hero" id="inicio">
+      <svg class="botanical hero-botanical" aria-hidden="true"><use href="#flor"/></svg>
+      <div class="hero-copy">
+        <!-- ✏️ frase de abertura do hero -->
+        <span class="eyebrow">de repente, um aninho</span>
+        <p class="script">Anote a data</p>
+        <!-- ✏️ nome: 1ª linha + 2ª linha em destaque (rosa) -->
+        <h2>Maria<br><em>Flor</em></h2>
+        <div class="hero-rule"><span>1 Aninho</span></div>
+        <p class="hero-quote">Uma noite para lembrar,<br>um momento para guardar para sempre</p>
+        <a href="#celebracao" class="scroll-hint">Descubra esta história
+          <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="m6 9 6 6 6-6"/></svg>
+        </a>
+      </div>
+      <div class="hero-photo-wrap">
+        <div class="hero-photo">
+          <!-- ✏️ FOTO DE DESTAQUE: quando a foto chegar, troque a .foto-placeholder por:
+               <img src="img/foto1.jpg" alt="descrição da foto"> -->
+          <span class="foto-placeholder"><strong>FOTO 1</strong><small>foto de destaque · img/foto1.jpg</small></span>
+        </div>
+        <!-- ✏️ legenda da foto -->
+        <span class="photo-caption">Aqui entra a foto de destaque</span>
+        <!-- ✏️ texto vertical ao lado da foto -->
+        <span class="photo-year">memórias<br><strong>que ficam</strong></span>
+      </div>
+    </section>
+
+    <!-- ══════════ CONTAGEM REGRESSIVA (automática pela data do CONFIG) ══════════ -->
+    <section class="countdown-section" id="contagem" aria-label="Contagem regressiva">
+      <span class="eyebrow">contando os dias</span>
+      <div class="countdown" id="countdown">
+        <div><strong id="cd-dias">00</strong><span>Dias</span></div>
+        <div><strong id="cd-horas">00</strong><span>Horas</span></div>
+        <div><strong id="cd-min">00</strong><span>Minutos</span></div>
+        <div><strong id="cd-seg">00</strong><span>Segundos</span></div>
+      </div>
+      <p class="today" id="hoje" hidden>É hoje! <span>✦</span></p>
+    </section>
+
+    <!-- ══════════ VAMOS CELEBRAR ══════════ -->
+    <section class="celebration paper-section" id="celebracao" data-reveal>
+      <div class="section-number">01</div>
+      <div class="celebration-copy">
+        <p class="script">Vamos celebrar</p>
+        <h2>Uma noite especial<br>está chegando...</h2>
+        <!-- ✏️ texto da apresentação -->
+        <p>Há momentos que merecem ser guardados para sempre. Quero celebrar a chegada do meu 1 Aninho ao lado das pessoas que fazem parte da minha história.</p>
+        <span class="ornament">✦</span>
+      </div>
+      <svg class="botanical celebration-flower" aria-hidden="true"><use href="#flor"/></svg>
+    </section>
+
+    <!-- ══════════ GALERIA ══════════ -->
+    <section class="gallery-section" id="fotos">
+      <div class="section-heading" data-reveal>
+        <span class="eyebrow">álbum de lembranças</span>
+        <h2>Memórias que<br><em>florescem</em></h2>
+        <p>Entre risos, sonhos e descobertas, cada fotografia guarda um pedacinho da minha história.</p>
+      </div>
+      <div class="gallery">
+        <!-- ✏️ FOTOS 1–4: quando as fotos chegarem, solte os arquivos foto1.jpg a foto4.jpg na pasta /img
+             e substitua cada .foto-placeholder pelo <img> correspondente (o botão de ampliar já funciona sozinho) -->
+        <button class="gallery-card gallery-card--1" data-reveal data-foto="0" aria-label="Espaço reservado para a foto 1">
+          <span class="photo-inner">
+            <span class="foto-placeholder"><strong>FOTO 1</strong><small>img/foto1.jpg</small></span>
+          </span>
+          <span class="gallery-note">Aqui vai a foto1</span>
+        </button>
+        <button class="gallery-card gallery-card--2" data-reveal data-foto="1" aria-label="Espaço reservado para a foto 2">
+          <span class="photo-inner">
+            <span class="foto-placeholder"><strong>FOTO 2</strong><small>img/foto2.jpg</small></span>
+          </span>
+          <span class="gallery-note">Aqui vai a foto2</span>
+        </button>
+        <button class="gallery-card gallery-card--3" data-reveal data-foto="2" aria-label="Espaço reservado para a foto 3">
+          <span class="photo-inner">
+            <span class="foto-placeholder"><strong>FOTO 3</strong><small>img/foto3.jpg</small></span>
+          </span>
+          <span class="gallery-note">Aqui vai a foto3</span>
+        </button>
+        <button class="gallery-card gallery-card--4" data-reveal data-foto="3" aria-label="Espaço reservado para a foto 4">
+          <span class="photo-inner">
+            <span class="foto-placeholder"><strong>FOTO 4</strong><small>img/foto4.jpg</small></span>
+          </span>
+          <span class="gallery-note">Aqui vai a foto4</span>
+        </button>
+      </div>
+    </section>
+
+    <!-- ══════════ DATA E LOCAL ══════════ -->
+    <section class="where-section" id="local" data-reveal>
+      <!-- carimbo da data: preenchido automaticamente pelo CONFIG.dataFesta -->
+      <div class="date-stamp">
+        <span id="ds-weekday">domingo</span>
+        <strong id="ds-day">13</strong>
+        <span id="ds-month">dezembro · 2026</span>
+      </div>
+      <div class="where-copy">
+        <span class="eyebrow">quando &amp; onde</span>
+        <h2>Nosso<br><em>encontro</em></h2>
+        <!-- ✏️ data por extenso e hora -->
+        <div class="event-detail">
+          <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M8 2v4"/><path d="M16 2v4"/><rect width="18" height="18" x="3" y="4" rx="2"/><path d="M3 10h18"/><path d="M8 14h.01"/><path d="M12 14h.01"/><path d="M16 14h.01"/><path d="M8 18h.01"/><path d="M12 18h.01"/><path d="M16 18h.01"/></svg>
+          <p><strong>13 de Dezembro de 2026</strong><br>às 19 horas</p>
+        </div>
+        <!-- ✏️ local e cidade -->
+        <div class="event-detail">
+          <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M20 10c0 4.993-5.539 10.193-7.399 11.799a1 1 0 0 1-1.202 0C9.539 20.193 4 14.993 4 10a8 8 0 0 1 16 0"/><circle cx="12" cy="10" r="3"/></svg>
+          <p><strong>Espaço da Festa</strong><br>Teresina, Piauí</p>
+        </div>
+        <!-- botão: destino automático pelo CONFIG.linkMapa -->
+        <a class="button button--dark" id="btn-mapa" href="#" target="_blank" rel="noreferrer">Ver no mapa
+          <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M15 3h6v6"/><path d="M10 14 21 3"/><path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6"/></svg>
+        </a>
+      </div>
+      <!-- QR code: gerado automaticamente a partir do CONFIG.linkMapa -->
+      <div class="qr-card">
+        <div class="qr-frame"><img id="qr-img" src="" alt="QR Code para a localização da festa"></div>
+        <p>Escaneie para encontrar<br>o local da celebração.</p>
+      </div>
+    </section>
+
+    <!-- ══════════ DRESS CODE ══════════ -->
+    <section class="dress-section" id="dress-code">
+      <svg class="botanical dress-flower" aria-hidden="true"><use href="#flor"/></svg>
+      <div class="dress-card" data-reveal>
+        <span class="eyebrow">para esta noite</span>
+        <p class="script">Código de Vestimenta</p>
+        <h2>Vista-se para uma<br>noite inesquecível.</h2>
+        <!-- ✏️ texto do dress code -->
+        <p>Escolha um traje elegante e confortável, à altura de uma celebração de 1 Aninho — sem excessos, apenas você em sua melhor versão.</p>
+        <!-- ✏️ aviso de cor reservada (o swatch mostra as cores) -->
+        <div class="pink-note">
+          <span class="swatch"></span>
+          <p><strong>Uma delicadeza importante</strong><br>O rosa e suas variações serão cores reservadas à Flor.</p>
+        </div>
+      </div>
+    </section>
+
+    <!-- ══════════ CONFIRMAÇÃO DE PRESENÇA ══════════ -->
+    <section class="rsvp-section" id="rsvp" data-reveal>
+      <span class="eyebrow">confirmação de presença</span>
+      <p class="script">Você vem celebrar comigo?</p>
+      <h2>Sua presença tornará esta noite<br>ainda mais especial.</h2>
+      <!-- ✏️ sem link por enquanto: quando o Google Forms estiver pronto,
+           troque <button ...> ... </button> por <a class="button button--light" href="SEU_LINK_DO_FORMS" target="_blank"> ... </a>
+           (ou preencha CONFIG.linkFormPresenca e descomente a linha no script) -->
+      <button class="button button--light" id="btn-rsvp" type="button">Confirmar presença <span>→</span></button>
+      <div class="invite-notice">
+        <span>Convite individual</span><i></i><span>Não compartilhar com terceiros</span>
+      </div>
+    </section>
+
+    <!-- ══════════ PRESENTES ══════════ -->
+    <section class="gift-section" id="presentes" data-reveal>
+      <div class="gift-icon">
+        <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 7v14"/><path d="M20 11v8a2 2 0 0 1-2 2H6a2 2 0 0 1-2-2v-8"/><path d="M7.5 7a1 1 0 0 1 0-5A4.8 8 0 0 1 12 7a4.8 8 0 0 1 4.5-5 1 1 0 0 1 0 5"/><rect x="3" y="7" width="18" height="4" rx="1"/></svg>
+      </div>
+      <span class="eyebrow">com carinho, um presente</span>
+      <h2>O melhor presente<br><em>é ter você comigo.</em></h2>
+      <p>Mais importante do que qualquer presente é ter você comigo neste momento tão especial. Mas, se desejar me presentear, preparei uma lista para facilitar.</p>
+      <!-- ✏️ sem link por enquanto (inacessível): quando a lista de presentes estiver pronta,
+           troque <button ...> ... </button> por <a class="button button--outline" href="SEU_LINK" target="_blank"> ... </a>
+           (ou preencha CONFIG.linkPresentes e descomente a linha no script) -->
+      <button class="button button--outline button--aguardando" id="btn-presentes" type="button" aria-disabled="true">Ver lista de presentes</button>
+    </section>
+  </main>
+
+  <!-- ══════════ RODAPÉ ══════════ -->
+  <footer>
+    <svg class="botanical footer-flower" aria-hidden="true"><use href="#flor"/></svg>
+    <span class="eyebrow">com amor,</span>
+    <!-- ✏️ nome (caligrafia) -->
+    <p class="footer-name">Maria Flor</p>
+    <p class="footer-age">1 Aninho</p>
+    <div class="footer-rule"></div>
+    <p>Uma noite para lembrar,<br>um momento para guardar para sempre</p>
+    <!-- data: preenchida automaticamente pelo CONFIG.dataFesta -->
+    <small id="footer-data">13 · 12 · 2026</small>
+  </footer>
+
+  <!-- ══════════ MÚSICA ══════════ -->
+  <button class="music-button" id="btn-musica" aria-label="Tocar música">
+    <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="8" cy="18" r="4"/><path d="M12 18V2l7 4"/></svg>
+    <span id="musica-status">música</span>
+  </button>
+</div>
+
+<!-- ══════════ LIGHTBOX (foto ampliada) ══════════ -->
+<div class="lightbox" id="lightbox" hidden role="dialog" aria-modal="true" aria-label="Foto ampliada">
+  <button id="lb-fechar" aria-label="Fechar foto">
+    <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M18 6 6 18"/><path d="m6 6 12 12"/></svg>
+  </button>
+  <img id="lb-img" src="" alt="">
+  <p id="lb-note"></p>
+</div>
+
+<script>
+/* ════════════════════════════════════════════════════════════════
+   ✏️✏️✏️  CONFIGURAÇÃO — EDITE SOMENTE ESTE BLOCO DE DADOS  ✏️✏️✏️
+   (o resto do site é montado a partir daqui)
+   ════════════════════════════════════════════════════════════════ */
+const CONFIG = {
+  // Data e hora da festa — alimenta: contagem regressiva,
+  // carimbo da data, data no rodapé. Formato: AAAA-MM-DDTHH:MM:SS-03:00
+  dataFesta: "2026-12-13T19:00:00-03:00",
+
+  // ✏️ Google Forms de confirmação de presença: cole o link do formulário aqui
+  // (enquanto vazio, o botão "Confirmar presença" fica sem link)
+  linkFormPresenca: "",
+
+  // Link do mapa (Google Maps) — alimenta o botão "Ver no mapa" e o QR CODE
+  linkMapa: "https://maps.app.goo.gl/SmFRwkeV3gq4eMnj6",
+
+  // ✏️ Lista de presentes: cole o link aqui quando estiver pronta
+  // (enquanto vazio, o botão "Ver lista de presentes" fica inacessível)
+  linkPresentes: "",
+
+  // ✏️ Música do convite (arquivo no site — pasta "audio/")
+  // Para trocar: substitua o arquivo em audio/ e atualize o nome abaixo
+  musicaSrc: "audio/flor.mp3",
+  musicaNome: "Flor — Vitor Kley",
+};
+
+// (A confirmação de presença usa o Google Forms — veja CONFIG.linkFormPresenca acima.)
+
+// Fotos da galeria (a ordem aqui = a ordem das fotos na página)
+const FOTOS = [
+  { src: "" },  // foto1 → preencha com "img/foto1.jpg" quando a foto chegar
+  { src: "" },  // foto2
+  { src: "" },  // foto3
+  { src: "" },  // foto4
+];
+/* ════════════════════ FIM DA CONFIGURAÇÃO ════════════════════ */
+
+const $ = (id) => document.getElementById(id);
+const dataFesta = new Date(CONFIG.dataFesta);
+
+/* ── carimbo da data + rodapé (automático) ── */
+(function preencherDatas(){
+  const sem = new Intl.DateTimeFormat("pt-BR", { weekday: "long" }).format(dataFesta).replace("-feira", "");
+  const mesAno = new Intl.DateTimeFormat("pt-BR", { month: "long", year: "numeric" }).format(dataFesta).replace(" de ", " · ");
+  $("ds-weekday").textContent = sem;
+  $("ds-day").textContent = String(dataFesta.getDate());
+  $("ds-month").textContent = mesAno;
+  $("footer-data").textContent = `${dataFesta.getDate()} · ${String(dataFesta.getMonth() + 1).padStart(2, "0")} · ${dataFesta.getFullYear()}`;
+})();
+
+/* ── links automáticos ── */
+$("btn-mapa").href = CONFIG.linkMapa;
+
+/* ── botão "Confirmar presença": ganha o link do Google Forms quando CONFIG.linkFormPresenca for preenchido ── */
+if (CONFIG.linkFormPresenca){
+  const rsvp = $("btn-rsvp");
+  const a = document.createElement("a");
+  a.className = "button button--light";
+  a.href = CONFIG.linkFormPresenca;
+  a.target = "_blank";
+  a.rel = "noreferrer";
+  a.innerHTML = rsvp.innerHTML;
+  rsvp.replaceWith(a);
+}
+
+/* ── botão "Ver lista de presentes": ganha o link quando CONFIG.linkPresentes for preenchido ── */
+if (CONFIG.linkPresentes){
+  const gp = $("btn-presentes");
+  const a = document.createElement("a");
+  a.className = "button button--outline";
+  a.href = CONFIG.linkPresentes;
+  a.target = "_blank";
+  a.rel = "noreferrer";
+  a.innerHTML = gp.innerHTML;
+  gp.replaceWith(a);
+}
+$("btn-musica").setAttribute("aria-label", `Tocar ${CONFIG.musicaNome}`);
+
+/* ── QR code do local (gerado a partir do link do mapa) ── */
+$("qr-img").src = `https://api.qrserver.com/v1/create-qr-code/?size=640x640&color=663946&bgcolor=fffaf5&data=${encodeURIComponent(CONFIG.linkMapa)}`;
+
+/* ── contagem regressiva ── */
+(function contagem(){
+  const alvo = dataFesta.getTime();
+  const resto = () => Math.max(0, alvo - Date.now());
+  const pad = (n) => String(n).padStart(2, "0");
+  function tick(){
+    const r = resto();
+    if (r <= 0){
+      // passou do horário: no dia da festa mostra "É hoje!", depois esconde a seção
+      if (new Date().toDateString() === new Date(alvo).toDateString()){
+        $("countdown").hidden = true;
+        $("hoje").hidden = false;
+      } else {
+        $("contagem").style.display = "none";
+      }
+      return;
+    }
+    $("cd-dias").textContent  = pad(Math.floor(r / 864e5));
+    $("cd-horas").textContent = pad(Math.floor(r / 36e5) % 24);
+    $("cd-min").textContent   = pad(Math.floor(r / 6e4) % 60);
+    $("cd-seg").textContent   = pad(Math.floor(r / 1e3) % 60);
+  }
+  tick();
+  window.setInterval(tick, 1000);
+})();
+
+/* ── tela de abertura ── */
+const opening = $("opening"), site = $("site");
+document.body.style.overflow = "hidden"; // trava a rolagem enquanto o convite está fechado
+$( "btn-abrir").addEventListener("click", () => {
+  opening.classList.add("opening--away");
+  opening.setAttribute("aria-hidden", "true");
+  site.classList.add("site--visible");
+  document.body.style.overflow = "";
+  iniciarMusica(); // a abertura do convite é o gesto que libera o áudio
+});
+
+/* ── menu mobile ── */
+const nav = $("nav"), navToggle = $("nav-toggle");
+navToggle.addEventListener("click", () => {
+  const aberto = nav.classList.toggle("nav-open");
+  navToggle.setAttribute("aria-expanded", aberto);
+});
+nav.querySelectorAll("a").forEach((a) => a.addEventListener("click", () => {
+  nav.classList.remove("nav-open");
+  navToggle.setAttribute("aria-expanded", "false");
+}));
+
+/* ── revelação suave ao rolar ── */
+(function reveals(){
+  const io = new IntersectionObserver(
+    (entries) => entries.forEach((e) => e.isIntersecting && e.target.classList.add("revealed")),
+    { threshold: .12 }
+  );
+  document.querySelectorAll("[data-reveal]").forEach((el) => io.observe(el));
+})();
+
+/* ── lightbox (fotos ampliadas) ── */
+const lightbox = $("lightbox");
+function abrirFoto(i){
+  const foto = FOTOS[i];
+  if (!foto.src) return; // espaço ainda vazio: o lightbox abre sozinho quando a foto chegar
+  $("lb-img").src = foto.src;
+  $("lb-img").alt = foto.alt || "";
+  $("lb-note").textContent = document.querySelector(`[data-foto="${i}"] .gallery-note`).textContent;
+  lightbox.hidden = false;
+  document.body.style.overflow = "hidden";
+}
+function fecharFoto(){
+  lightbox.hidden = true;
+  document.body.style.overflow = "";
+}
+document.querySelectorAll(".gallery-card").forEach((card) => {
+  card.addEventListener("click", () => abrirFoto(Number(card.dataset.foto)));
+});
+$("lb-fechar").addEventListener("click", fecharFoto);
+lightbox.addEventListener("click", (e) => { if (e.target === lightbox) fecharFoto(); });
+document.addEventListener("keydown", (e) => { if (e.key === "Escape" && !lightbox.hidden) fecharFoto(); });
+
+/* ── música (áudio local: começa sozinho ao abrir o convite) ── */
+const audioMusica = new Audio(CONFIG.musicaSrc);
+audioMusica.loop = true;
+audioMusica.preload = "auto";
+let musicaIniciada = false;
+
+function atualizarEstadoMusica() {
+  const btn = $("btn-musica");
+  const tocando = !audioMusica.paused && !audioMusica.ended;
+  btn.classList.toggle("playing", tocando);
+  $("musica-status").textContent = tocando ? "tocando" : "música";
+}
+
+function iniciarMusica() {
+  if (musicaIniciada) { atualizarEstadoMusica(); return; }
+  musicaIniciada = true;
+  const p = audioMusica.play();
+  if (p) p.catch(() => {
+    // o navegador bloqueou o áudio mesmo com o clique —
+    // a música tocará no primeiro toque no botão de música
+  });
+  atualizarEstadoMusica();
+}
+
+$("btn-musica").addEventListener("click", () => {
+  const tocando = !audioMusica.paused && !audioMusica.ended;
+  if (tocando) audioMusica.pause();
+  else iniciarMusica();
+  atualizarEstadoMusica();
+});
+audioMusica.addEventListener("play", atualizarEstadoMusica);
+audioMusica.addEventListener("pause", atualizarEstadoMusica);
+audioMusica.addEventListener("ended", atualizarEstadoMusica);
+</script>
+</body>
+</html>
