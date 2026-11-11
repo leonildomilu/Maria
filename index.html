@@ -24,6 +24,8 @@
 :root{
   --wine:#663946;   /* vinho — fundos fortes, títulos, botões */
   --rose:#b77b88;   /* rosé  — palavras em destaque, script */
+  --baby-pink:#e8a7b3; /* rosa-bebê — nome, rótulos e detalhes de destaque */
+  --baby-pink-deep:#cf8298; /* rosa-bebê mais intenso — rótulos sobre fundo claro */
   --blush:#ead1d4;  /* blush — detalhes suaves, fundos de seção */
   --powder:#f5e6e5; /* pó de rosa — reservado */
   --paper:#fffaf5;  /* papel — fundo principal (creme) */
@@ -95,8 +97,10 @@ a{color:inherit;text-decoration:none}
 .hero-copy{z-index:2;justify-self:end;position:relative}
 .hero-copy>.eyebrow{color:var(--rose)}
 .hero-copy>.script{margin:1.1rem 0 -1rem;font-size:2.2rem}
-.hero h2{font:clamp(4.5rem,9vw,9rem)/.72 var(--serif);color:var(--wine);letter-spacing:-.04em;margin:1.4rem 0 2.2rem;font-weight:400}
-.hero h2 em{color:var(--rose);margin-left:1.5vw;font-style:italic}
+.hero h2{font:clamp(4.5rem,9vw,9rem)/.72 var(--serif);letter-spacing:-.04em;margin:1.4rem 0 2.2rem;font-weight:400}
+.hero h2 span{color:var(--baby-pink);text-shadow:0 2px 0 #fff,0 0 26px #f2c3cb;display:inline-block;padding:0 .04em;position:relative}
+.hero h2 span:after{content:"";background:linear-gradient(90deg,transparent,#f6d3d9 18%,#f6d3d9 82%,transparent);height:.32em;top:55%;left:-.02em;width:104%;z-index:-1;position:absolute;border-radius:.15em}
+.hero h2 em{color:var(--baby-pink);margin-left:1.5vw;font-style:italic}
 .hero-rule{background:#b9986799;width:100%;height:1px;margin:0 0 1.7rem;position:relative}
 .hero-rule span{color:var(--gold);font:1.2rem var(--serif);text-transform:uppercase;background:#fffaf6;padding-left:1rem;position:absolute;top:50%;right:0;transform:translateY(-50%)}
 .hero-quote{font:italic 1rem/1.55 var(--serif);letter-spacing:.04em}
@@ -106,7 +110,7 @@ a{color:inherit;text-decoration:none}
 
 /* ══════════ CONTAGEM REGRESSIVA ══════════ */
 .countdown-section{background:var(--wine);color:#fff;justify-content:center;align-items:center;gap:6vw;padding:2.1rem 6vw;display:flex}
-.countdown-section>.eyebrow{color:#dcbac1;writing-mode:vertical-rl}
+.countdown-section>.eyebrow{color:#f3c6cf;writing-mode:vertical-rl}
 .countdown{grid-template-columns:repeat(4,1fr);gap:clamp(1.5rem,6vw,6rem);display:grid}
 .countdown div{text-align:center;position:relative}
 .countdown div:not(:last-child):after{content:"";background:#fff3;width:1px;height:28px;position:absolute;top:18px;right:calc(-.75rem - 3vw)}
@@ -133,7 +137,7 @@ a{color:inherit;text-decoration:none}
 .date-stamp:after{content:"";border:1px solid #b9986759;position:absolute;inset:7px}
 .date-stamp span{text-transform:uppercase;letter-spacing:.2em;font-size:.58rem;display:block}
 .date-stamp strong{font:6rem/1 var(--serif);color:var(--wine);margin:.5rem;font-weight:400;display:block}
-.where-copy>.eyebrow{color:var(--rose)}
+.where-copy>.eyebrow{color:var(--baby-pink-deep)}
 .where-copy h2{margin:.7rem 0 2rem}
 .event-detail{gap:1rem;margin:1.2rem 0;display:flex}
 .event-detail svg{width:20px;color:var(--gold);flex:none}
@@ -152,14 +156,15 @@ a{color:inherit;text-decoration:none}
 .rsvp-section>.eyebrow{color:var(--rose)}
 .rsvp-section>.script{margin:1rem 0;font-size:clamp(2.7rem,6vw,5rem)}
 .rsvp-section h2{font:clamp(1.15rem,2vw,1.5rem)/1.6 var(--serif);letter-spacing:.04em;color:var(--wine);margin-bottom:2.2rem;font-weight:400}
-.button--light{color:var(--wine);background:#fffaf6}
+.button--light{color:#fff;background:var(--wine);border-color:var(--wine);box-shadow:0 12px 26px -10px #66394699}
+#btn-rsvp,#rsvp a.button{color:#fff;background:var(--wine);border-color:var(--wine);box-shadow:0 12px 26px -10px #66394699}
 .invite-notice{text-transform:uppercase;letter-spacing:.14em;color:#986875;justify-content:center;align-items:center;gap:1rem;margin-top:3.5rem;font-size:.52rem;display:flex}
 .invite-notice i{background:#66394640;width:1px;height:22px}
 
 /* ══════════ RODAPÉ ══════════ */
 footer{text-align:center;color:var(--wine);background:#f9e0e3;padding:8rem 2rem 5rem;position:relative;overflow:hidden}
-footer>.eyebrow{color:#986875}
-.footer-name{font:clamp(3.4rem,8vw,6.5rem)/1 var(--script);margin:1rem 0 0}
+footer>.eyebrow{color:var(--baby-pink-deep)}
+.footer-name{font:clamp(3.4rem,8vw,6.5rem)/1 var(--script);margin:1rem 0 0;color:var(--baby-pink-deep);text-shadow:0 1px 0 #fff}
 .footer-age{font:1.4rem var(--serif);text-transform:uppercase;letter-spacing:.25em}
 .footer-rule{background:var(--gold);width:100px;height:1px;margin:2rem auto}
 footer>p:not(.footer-name):not(.footer-age){font:italic 1rem/1.6 var(--serif)}
@@ -413,7 +418,7 @@ footer .creature--joaninha{top:44%;right:9%}
         <!-- ✏️ frase de abertura do hero -->
         <span class="eyebrow">de repente, um aninho</span>
         <!-- ✏️ nome: 1ª linha + 2ª linha em destaque (rosa) -->
-        <h2>Maria<br><em>Flor</em></h2>
+        <h2><span>Maria</span><br><em>Flor</em></h2>
         <div class="hero-rule"><span>1 Aninho</span></div>
         <p class="hero-quote">Uma noite para lembrar,<br>um momento para guardar para sempre</p>
       </div>
