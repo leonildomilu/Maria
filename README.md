@@ -1,6 +1,6 @@
 # Convite 1 Aninho — Maria Flor
 
-Convite online para o 1 aninho da Maria Flor (13/12/2026 · Espaço da Festa, Teresina-PI).
+Convite online para o 1 aninho da Maria Flor (17/12/2026 · Sonhare Eventos, Teresina-PI).
 
 ## Estrutura
 ```
