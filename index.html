@@ -29,13 +29,14 @@
   --paper:#fffaf5;  /* papel — fundo principal (creme) */
   --ink:#443236;    /* tinta — cor do texto */
   --gold:#b99867;   /* dourado — bordas, ornamentos, datas */
+  --gingham:linear-gradient(rgba(240,186,197,.38) 50%,transparent 50%),linear-gradient(90deg,rgba(240,186,197,.38) 50%,transparent 50%); /* quadriculado rosa-bebê */
   --serif:"Italiana",serif;      /* fonte dos títulos */
   --sans:"Montserrat",sans-serif;/* fonte do corpo (300/400/500/600) */
   --script:"Parisienne",cursive; /* fonte caligráfica */
 }
 *{box-sizing:border-box}
 html{scroll-behavior:smooth;scroll-padding-top:72px}
-body{background:var(--paper);color:var(--ink);font-family:var(--sans);margin:0;font-weight:300;overflow-x:hidden}
+body{background-color:#fffaf7;background-image:var(--gingham);background-size:28px 28px;color:var(--ink);font-family:var(--sans);margin:0;font-weight:300;overflow-x:hidden}
 button,a{font:inherit}
 button{cursor:pointer}
 a{color:inherit;text-decoration:none}
@@ -63,7 +64,7 @@ a{color:inherit;text-decoration:none}
 [data-reveal].revealed{opacity:1;transform:none}
 
 /* ══════════ TELA DE ABERTURA ══════════ */
-.opening{z-index:1000;background:linear-gradient(rgba(255,250,245,.5),rgba(255,250,245,.5)),url(img/estampa.jpg) center/cover;place-items:center;transition:opacity 1s,visibility 1s;display:grid;position:fixed;inset:0;overflow:hidden}
+.opening{z-index:1000;background-color:#fffaf7;background-image:linear-gradient(rgba(255,250,247,.4),rgba(255,250,247,.4)),var(--gingham);background-size:auto,28px 28px;place-items:center;transition:opacity 1s,visibility 1s;display:grid;position:fixed;inset:0;overflow:hidden}
 .opening:after{content:"";pointer-events:none;border:1px solid #b9986773;position:absolute;inset:18px}
 .opening--away{opacity:0;visibility:hidden}
 .opening-card{text-align:center;z-index:2;animation:1.4s both opening-in;position:relative}
@@ -90,7 +91,7 @@ a{color:inherit;text-decoration:none}
 .nav-toggle{color:var(--wine);background:transparent;border:0;display:none}
 
 /* ══════════ HERO (nome + foto) ══════════ */
-.hero{background:linear-gradient(105deg,#fffaf6 0 53%,transparent 53%),url(img/estampa.jpg) center/cover;grid-template-columns:.86fr 1.14fr;align-items:center;gap:7vw;min-height:100svh;padding:110px max(6vw,2rem) 55px;display:grid;position:relative;overflow:hidden}
+.hero{background:linear-gradient(105deg,#fffaf6 0 53%,#fffaf62e 53%);grid-template-columns:.86fr 1.14fr;align-items:center;gap:7vw;min-height:100svh;padding:110px max(6vw,2rem) 55px;display:grid;position:relative;overflow:hidden}
 .hero-copy{z-index:2;justify-self:end;position:relative}
 .hero-copy>.eyebrow{color:var(--rose)}
 .hero-copy>.script{margin:1.1rem 0 -1rem;font-size:2.2rem}
@@ -121,7 +122,7 @@ a{color:inherit;text-decoration:none}
 
 /* ══════════ "VAMOS CELEBRAR" (papel com textura) ══════════ */
 .paper-section{min-height:600px;padding:9rem 10vw;position:relative;overflow:hidden}
-.celebration{background-image:linear-gradient(#fffaf5f0,#fffaf5f0),url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='100' height='100'%3E%3Cfilter id='n'%3E%3CfeTurbulence baseFrequency='.8' numOctaves='3' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)' opacity='.08'/%3E%3C/svg%3E");place-items:center;display:grid}
+.celebration{background:linear-gradient(rgba(255,250,247,.55),rgba(255,250,247,.55));place-items:center;display:grid}
 .section-number{font:7rem var(--serif);color:#b77b881a;position:absolute;top:6rem;left:6vw}
 .celebration-copy{text-align:center;max-width:650px}
 .celebration-copy .script{margin:0;font-size:2.5rem}
@@ -131,7 +132,7 @@ a{color:inherit;text-decoration:none}
 .celebration-flower{width:330px;color:var(--blush);position:absolute;bottom:-120px;right:-50px;transform:rotate(-20deg)}
 
 /* ══════════ GALERIA (fotografias) ══════════ */
-.gallery-section{background:linear-gradient(rgba(255,250,245,.3),rgba(255,250,245,.3)),url(img/estampa.jpg) center/cover;padding:8rem 8vw 10rem;position:relative}
+.gallery-section{background:linear-gradient(rgba(255,250,247,.35),rgba(255,250,247,.35));padding:8rem 8vw 10rem;position:relative}
 .section-heading{text-align:center;max-width:620px;margin:0 auto 5rem}
 .section-heading .eyebrow{color:var(--rose)}
 .section-heading h2 em,.where-copy h2 em,.gift-section h2 em{color:var(--rose);font-style:italic}
@@ -150,7 +151,7 @@ a{color:inherit;text-decoration:none}
 .gallery-card--4{transform:rotate(-3deg)}
 
 /* ══════════ DATA E LOCAL ══════════ */
-.where-section{background:var(--paper);grid-template-columns:.7fr 1.1fr .7fr;align-items:center;gap:6vw;padding:9rem 8vw;display:grid}
+.where-section{background:linear-gradient(rgba(255,250,247,.5),rgba(255,250,247,.5));position:relative;grid-template-columns:.7fr 1.1fr .7fr;align-items:center;gap:6vw;padding:9rem 8vw;display:grid}
 .date-stamp{text-align:center;border:1px solid var(--gold);padding:2.7rem 1rem;position:relative}
 .date-stamp:after{content:"";border:1px solid #b9986759;position:absolute;inset:7px}
 .date-stamp span{text-transform:uppercase;letter-spacing:.2em;font-size:.58rem;display:block}
@@ -190,7 +191,7 @@ a{color:inherit;text-decoration:none}
 .invite-notice i{background:#ffffff40;width:1px;height:22px}
 
 /* ══════════ PRESENTES ══════════ */
-.gift-section{text-align:center;max-width:850px;margin:auto;padding:9rem 2rem}
+.gift-section{text-align:center;max-width:850px;margin:auto;padding:9rem 2rem;position:relative}
 .gift-icon{border:1px solid var(--gold);width:60px;height:60px;color:var(--gold);border-radius:50%;place-items:center;margin:0 auto 1.5rem;display:grid}
 .gift-icon svg{width:22px}
 .gift-section>.eyebrow{color:var(--rose)}
@@ -202,7 +203,7 @@ a{color:inherit;text-decoration:none}
 .button--aguardando{opacity:.5;cursor:not-allowed;pointer-events:none}
 
 /* ══════════ RODAPÉ ══════════ */
-footer{text-align:center;color:var(--wine);background:linear-gradient(rgba(255,250,245,.4),rgba(255,250,245,.4)),url(img/estampa.jpg) center/cover;padding:8rem 2rem 5rem;position:relative;overflow:hidden}
+footer{text-align:center;color:var(--wine);background:linear-gradient(rgba(255,250,247,.45),rgba(255,250,247,.45));padding:8rem 2rem 5rem;position:relative;overflow:hidden}
 footer>.eyebrow{color:#986875}
 .footer-name{font:clamp(3.4rem,8vw,6.5rem)/1 var(--script);margin:1rem 0 0}
 .footer-age{font:1.4rem var(--serif);text-transform:uppercase;letter-spacing:.25em}
@@ -227,6 +228,66 @@ footer small{letter-spacing:.25em;margin-top:2rem;font-size:.57rem;display:block
 .foto-placeholder strong{font:1.7rem var(--serif);letter-spacing:.08em;color:var(--gold)}
 .foto-placeholder small{font-size:.55rem;letter-spacing:.14em;text-transform:uppercase;color:var(--rose)}
 
+/* ══════════ ELEMENTOS FLORESCER (borboletas, abelhas, joaninhas, flores) ══════════ */
+.creature{position:absolute;z-index:2;pointer-events:none}
+.creature use{stroke-linejoin:round;stroke-linecap:round}
+.creature--borboleta{width:115px}
+.creature--abelha{width:100px}
+.creature--joaninha{width:66px}
+.creature--flor{color:var(--blush)}
+.creature--flor-l{width:210px}
+.creature--flor-s{width:125px}
+/* posições por seção */
+.opening .creature--borboleta{top:13%;left:6%}
+.opening .creature--abelha{top:19%;right:7%;transform:scaleX(-1)}
+.opening .creature--joaninha{bottom:15%;right:11%}
+.hero .creature--borboleta{top:15%;left:3.5%}
+.hero .creature--flor-l{bottom:-46px;left:-52px}
+.hero .creature--flor-s{top:11%;right:37%}
+.hero .creature--joaninha{bottom:24%;left:41%}
+.celebration .creature--abelha{top:13%;right:7%}
+.celebration .creature--joaninha{bottom:17%;left:6%}
+.celebration .creature--flor-l{bottom:-110px;right:-44px}
+.gallery-section .creature--borboleta{top:7%;right:5%}
+.gallery-section .creature--abelha{top:47%;left:3.5%;transform:scaleX(-1)}
+.where-section .creature--joaninha{top:15%;left:4.5%}
+.where-section .creature--flor-s{bottom:-34px;right:-26px}
+.gift-section .creature--borboleta{top:9%;left:5%}
+.gift-section .creature--joaninha{bottom:12%;right:7%}
+footer .creature--flor-l{bottom:-100px;right:-70px}
+footer .creature--abelha{top:16%;left:6%;transform:scaleX(-1)}
+footer .creature--joaninha{top:44%;right:9%}
+@media(max-width:760px){
+  .creature{opacity:.9}
+  .creature--borboleta{width:80px}
+  .creature--abelha{width:70px}
+  .creature--joaninha{width:48px}
+  .creature--flor-l{width:150px}
+  .creature--flor-s{width:90px}
+  .opening .creature--borboleta{top:9%;left:4%}
+  .opening .creature--abelha{top:11%;right:5%}
+  .opening .creature--joaninha{bottom:11%;right:7%}
+  .hero .creature--borboleta{top:12%;left:3%}
+  .hero .creature--flor-l{bottom:-34px;left:-40px}
+  .hero .creature--flor-s{top:8%;right:5%}
+  .hero .creature--joaninha{bottom:19%;left:3%}
+  .celebration .creature--abelha{top:10%;right:5%}
+  .celebration .creature--joaninha{bottom:12%;left:5%}
+  .celebration .creature--flor-l{bottom:-60px;right:-34px}
+  .gallery-section .creature--borboleta{top:5%;right:4%}
+  .gallery-section .creature--abelha{top:44%;left:3%}
+  .where-section .creature--joaninha{top:8%;left:4%}
+  .where-section .creature--flor-s{bottom:-24px;right:-18px}
+  .gift-section .creature--borboleta{top:6%;left:4%}
+  .gift-section .creature--joaninha{bottom:9%;right:5%}
+  footer .creature--flor-l{bottom:-60px;right:-40px}
+  footer .creature--abelha{top:12%;left:4%}
+  footer .creature--joaninha{top:38%;right:6%}
+}
+@media(prefers-reduced-motion:reduce){
+  .creature{animation:none!important}
+}
+
 /* ══════════ ANIMAÇÕES ══════════ */
 @keyframes opening-in{0%{opacity:0;transform:translateY(18px)}to{opacity:1;transform:none}}
 @keyframes fall{to{transform:translate(80px,120vh)rotate(520deg)}}
@@ -238,7 +299,7 @@ footer small{letter-spacing:.25em;margin-top:2rem;font-size:.57rem;display:block
   .nav-wrap nav{opacity:0;visibility:hidden;background:#fffaf6;flex-direction:column;gap:0;padding:.7rem;transition:all .25s;position:absolute;top:60px;left:12px;right:12px;transform:translateY(-10px);box-shadow:0 18px 50px #5a323d26}
   .nav-wrap nav.nav-open{opacity:1;visibility:visible;transform:none}
   .nav-wrap nav a{border-bottom:1px solid #f0dfe1;padding:1rem}
-  .hero{background:linear-gradient(#fffaf6 0 46%,transparent 46%),url(img/estampa.jpg) center top/cover;flex-direction:column;gap:3rem;min-height:auto;padding:115px 1.2rem 4rem;display:flex}
+  .hero{background:linear-gradient(#fffaf6 0 46%,#fffaf62e 46%);flex-direction:column;gap:3rem;min-height:auto;padding:115px 1.2rem 4rem;display:flex}
   .hero-copy{text-align:center;align-self:stretch}
   .hero-copy>.script{font-size:1.8rem}
   .hero h2{font-size:4.9rem}
@@ -299,6 +360,79 @@ footer small{letter-spacing:.25em;margin-top:2rem;font-size:.57rem;display:block
       <circle cx="184" cy="34" r="13"/><circle cx="205" cy="35" r="13"/><circle cx="195" cy="53" r="13"/><circle cx="177" cy="53" r="13"/><circle cx="191" cy="43" r="8"/>
     </g>
   </symbol>
+
+  <!-- ══ borboleta (aquarelada, com trilha pontilhada e coração) ══ -->
+  <symbol id="borboleta" viewBox="0 0 200 150">
+    <g fill="none" stroke-width="2.6" stroke-linecap="round" stroke-linejoin="round">
+      <path d="M22 20c24 12 48 10 66-6" stroke="#b77b88" stroke-dasharray="1 9" stroke-width="3"/>
+      <path d="M18 14c-5-6 1-13 8-11 6 2 7 7 4 11-4 5-9 6-12 0z" fill="#e79fb1" stroke="none"/>
+      <path d="M112 70C88 22 30 12 22 44c-6 26 30 42 76 30z" fill="#f6cfd9" stroke="#d18ba2"/>
+      <path d="M112 70c22-34 74-38 78-8 4 28-40 40-74 26z" fill="#f6cfd9" stroke="#d18ba2"/>
+      <path d="M112 70c-14 34-44 50-58 34-12-14 6-44 38-48z" fill="#f2bccd" stroke="#d18ba2"/>
+      <path d="M112 70c18 30 48 44 60 28 10-14-8-40-40-42z" fill="#f2bccd" stroke="#d18ba2"/>
+      <ellipse cx="112" cy="72" rx="6.5" ry="24" fill="#8a5a44" stroke="none"/>
+      <path d="M110 50c-6-10-14-16-24-18M114 50c6-10 14-16 24-18" stroke="#8a5a44"/>
+    </g>
+  </symbol>
+
+  <!-- ══ abelha (aquarelada, com trilha pontilhada e coração) ══ -->
+  <symbol id="abelha" viewBox="0 0 200 150">
+    <g fill="none" stroke-width="2.6" stroke-linecap="round" stroke-linejoin="round">
+      <path d="M150 26c-16-10-34-10-48 0" stroke="#b77b88" stroke-dasharray="1 9" stroke-width="3"/>
+      <path d="M188 22c-4-5 1-11 7-9 5 1 6 6 4 9-3 4-7 5-11 0z" fill="#e79fb1" stroke="none"/>
+      <ellipse cx="88" cy="46" rx="26" ry="17" transform="rotate(-24 88 46)" fill="#f4e3b2" stroke="#cdb27e" opacity=".85"/>
+      <ellipse cx="118" cy="40" rx="22" ry="14" transform="rotate(-6 118 40)" fill="#f4e3b2" stroke="#cdb27e" opacity=".7"/>
+      <ellipse cx="95" cy="92" rx="38" ry="26" transform="rotate(-18 95 92)" fill="#f7dfae" stroke="#b98a4e"/>
+      <path d="M74 70c-6 12-6 26 0 38M95 66c-7 13-8 30-2 44M116 68c-5 12-4 27 2 40" stroke="#b98a4e" stroke-width="3"/>
+      <circle cx="134" cy="74" r="10" fill="#8a5a44" stroke="none"/>
+      <path d="M142 66c4-6 10-9 16-9M144 74c6-2 12-1 16 2" stroke="#8a5a44"/>
+    </g>
+  </symbol>
+
+  <!-- ══ joaninha (aquarelada) ══ -->
+  <symbol id="joaninha" viewBox="0 0 120 110">
+    <g fill="none" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round">
+      <path d="M34 52c-8-2-14-8-16-16M32 68c-9 0-16-4-20-11M36 88c-8 2-14 8-16 15M86 52c8-2 14-8 16-16M88 68c9 0 16-4 20-11M84 88c8 2 14 8 16 15" stroke="#4a3338" stroke-width="2"/>
+      <circle cx="60" cy="30" r="14" fill="#4a3338" stroke="none"/>
+      <path d="M60 44c-24 2-34 20-30 36 3 14 16 22 30 22s27-8 30-22c4-16-6-34-30-36z" fill="#e2604f" stroke="#b04335"/>
+      <path d="M60 44v58" stroke="#b04335" stroke-width="2"/>
+      <circle cx="42" cy="62" r="5" fill="#4a3338" stroke="none"/>
+      <circle cx="78" cy="62" r="5" fill="#4a3338" stroke="none"/>
+      <circle cx="48" cy="84" r="4.5" fill="#4a3338" stroke="none"/>
+      <circle cx="72" cy="84" r="4.5" fill="#4a3338" stroke="none"/>
+    </g>
+  </symbol>
+
+  <!-- ══ ramo de flores (aquarelado, pastel) ══ -->
+  <symbol id="ramo" viewBox="0 0 240 320">
+    <g fill="none" stroke="#8fa083" stroke-width="2" stroke-linecap="round">
+      <path d="M30 305C70 220 120 130 196 30"/>
+      <path d="M96 210c-30-4-46-24-48-52 28 0 48 16 54 44" fill="#aebd9d" opacity=".55"/>
+      <path d="M150 120c20-16 40-18 60-6-16 22-40 26-64 12" fill="#aebd9d" opacity=".55"/>
+      <path d="M70 258c14-26 36-40 62-42-6 30-26 46-56 48" fill="#aebd9d" opacity=".55"/>
+    </g>
+    <g stroke-width="2">
+      <g fill="#f4c3cf" stroke="#d491a3">
+        <circle cx="196" cy="30" r="15"/><circle cx="217" cy="33" r="15"/><circle cx="210" cy="52" r="15"/><circle cx="188" cy="50" r="15"/>
+      </g>
+      <circle cx="203" cy="41" r="9" fill="#f2df9e"/>
+      <g fill="#f7e8a8" stroke="#d8bc6a">
+        <circle cx="48" cy="158" r="12"/><circle cx="66" cy="161" r="12"/><circle cx="60" cy="178" r="12"/><circle cx="42" cy="175" r="12"/>
+      </g>
+      <circle cx="54" cy="168" r="7" fill="#f4c3cf"/>
+      <g fill="#b9d4e8" stroke="#8fb4cf">
+        <circle cx="132" cy="96" r="10"/><circle cx="147" cy="98" r="10"/><circle cx="142" cy="112" r="10"/><circle cx="127" cy="110" r="10"/>
+      </g>
+      <circle cx="137" cy="104" r="6" fill="#fffaf7"/>
+      <g fill="#f6f1e6" stroke="#d9c9a8">
+        <circle cx="120" cy="252" r="11"/><circle cx="136" cy="255" r="11"/><circle cx="130" cy="269" r="11"/><circle cx="114" cy="266" r="11"/>
+      </g>
+      <circle cx="125" cy="261" r="6.5" fill="#f2df9e"/>
+      <circle cx="170" cy="76" r="8" fill="#f4c3cf" stroke="#d491a3"/>
+      <circle cx="86" cy="200" r="7" fill="#f7e8a8" stroke="#d8bc6a"/>
+      <circle cx="210" cy="120" r="7" fill="#f4c3cf" stroke="#d491a3"/>
+    </g>
+  </symbol>
 </svg>
 
 <!-- ══════════ TELA DE ABERTURA ══════════ -->
@@ -307,6 +441,9 @@ footer small{letter-spacing:.25em;margin-top:2rem;font-size:.57rem;display:block
     <i style="--i:0"></i><i style="--i:1"></i><i style="--i:2"></i><i style="--i:3"></i><i style="--i:4"></i>
     <i style="--i:5"></i><i style="--i:6"></i><i style="--i:7"></i><i style="--i:8"></i><i style="--i:9"></i>
   </div>
+  <svg class="creature creature--borboleta" aria-hidden="true"><use href="#borboleta"/></svg>
+  <svg class="creature creature--abelha" aria-hidden="true"><use href="#abelha"/></svg>
+  <svg class="creature creature--joaninha" aria-hidden="true"><use href="#joaninha"/></svg>
   <svg class="botanical opening-flower opening-flower--left" aria-hidden="true"><use href="#flor"/></svg>
   <svg class="botanical opening-flower opening-flower--right" aria-hidden="true"><use href="#flor"/></svg>
   <div class="opening-card">
@@ -344,7 +481,10 @@ footer small{letter-spacing:.25em;margin-top:2rem;font-size:.57rem;display:block
   <main>
     <!-- ══════════ HERO ══════════ -->
     <section class="hero" id="inicio">
-      <svg class="botanical hero-botanical" aria-hidden="true"><use href="#flor"/></svg>
+      <svg class="creature creature--borboleta" aria-hidden="true"><use href="#borboleta"/></svg>
+      <svg class="creature creature--flor creature--flor-l" aria-hidden="true"><use href="#ramo"/></svg>
+      <svg class="creature creature--flor creature--flor-s" aria-hidden="true"><use href="#ramo"/></svg>
+      <svg class="creature creature--joaninha" aria-hidden="true"><use href="#joaninha"/></svg>
       <div class="hero-copy">
         <!-- ✏️ frase de abertura do hero -->
         <span class="eyebrow">de repente, um aninho</span>
@@ -384,6 +524,9 @@ footer small{letter-spacing:.25em;margin-top:2rem;font-size:.57rem;display:block
 
     <!-- ══════════ VAMOS CELEBRAR ══════════ -->
     <section class="celebration paper-section" id="celebracao" data-reveal>
+      <svg class="creature creature--abelha" aria-hidden="true"><use href="#abelha"/></svg>
+      <svg class="creature creature--joaninha" aria-hidden="true"><use href="#joaninha"/></svg>
+      <svg class="creature creature--flor creature--flor-l" aria-hidden="true"><use href="#ramo"/></svg>
       <div class="section-number">01</div>
       <div class="celebration-copy">
         <p class="script">Vamos celebrar</p>
@@ -397,6 +540,8 @@ footer small{letter-spacing:.25em;margin-top:2rem;font-size:.57rem;display:block
 
     <!-- ══════════ GALERIA ══════════ -->
     <section class="gallery-section" id="fotos">
+      <svg class="creature creature--borboleta" aria-hidden="true"><use href="#borboleta"/></svg>
+      <svg class="creature creature--abelha" aria-hidden="true"><use href="#abelha"/></svg>
       <div class="section-heading" data-reveal>
         <span class="eyebrow">álbum de lembranças</span>
         <h2>Memórias que<br><em>florescem</em></h2>
@@ -434,6 +579,8 @@ footer small{letter-spacing:.25em;margin-top:2rem;font-size:.57rem;display:block
 
     <!-- ══════════ DATA E LOCAL ══════════ -->
     <section class="where-section" id="local" data-reveal>
+      <svg class="creature creature--joaninha" aria-hidden="true"><use href="#joaninha"/></svg>
+      <svg class="creature creature--flor creature--flor-s" aria-hidden="true"><use href="#ramo"/></svg>
       <!-- carimbo da data: preenchido automaticamente pelo CONFIG.dataFesta -->
       <div class="date-stamp">
         <span id="ds-weekday">domingo</span>
@@ -498,6 +645,8 @@ footer small{letter-spacing:.25em;margin-top:2rem;font-size:.57rem;display:block
 
     <!-- ══════════ PRESENTES ══════════ -->
     <section class="gift-section" id="presentes" data-reveal>
+      <svg class="creature creature--borboleta" aria-hidden="true"><use href="#borboleta"/></svg>
+      <svg class="creature creature--joaninha" aria-hidden="true"><use href="#joaninha"/></svg>
       <div class="gift-icon">
         <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 7v14"/><path d="M20 11v8a2 2 0 0 1-2 2H6a2 2 0 0 1-2-2v-8"/><path d="M7.5 7a1 1 0 0 1 0-5A4.8 8 0 0 1 12 7a4.8 8 0 0 1 4.5-5 1 1 0 0 1 0 5"/><rect x="3" y="7" width="18" height="4" rx="1"/></svg>
       </div>
@@ -513,7 +662,9 @@ footer small{letter-spacing:.25em;margin-top:2rem;font-size:.57rem;display:block
 
   <!-- ══════════ RODAPÉ ══════════ -->
   <footer>
-    <svg class="botanical footer-flower" aria-hidden="true"><use href="#flor"/></svg>
+    <svg class="creature creature--abelha" aria-hidden="true"><use href="#abelha"/></svg>
+    <svg class="creature creature--joaninha" aria-hidden="true"><use href="#joaninha"/></svg>
+    <svg class="creature creature--flor creature--flor-l" aria-hidden="true"><use href="#ramo"/></svg>
     <span class="eyebrow">com amor,</span>
     <!-- ✏️ nome (caligrafia) -->
     <p class="footer-name">Maria Flor</p>
