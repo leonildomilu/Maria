@@ -87,7 +87,7 @@ a{color:inherit;text-decoration:none}
 .opening-flower--left{bottom:-70px;left:-4vw;transform:rotate(12deg)}
 .opening-flower--right{top:-60px;right:-4vw;transform:rotate(192deg)}
 .opening-flower--bottom-right{bottom:-70px;right:-4vw;transform:scaleX(-1) rotate(12deg)}
-.opening-ramo{width:clamp(105px,15vw,150px);top:7%;left:3.5%;z-index:1;position:absolute}
+.opening-flower--top-left{top:-60px;left:-4vw;transform:scaleX(-1) rotate(-12deg)}
 .petals i{top:-10%;left:calc(var(--i) * 11%);opacity:.4;width:9px;height:15px;animation:fall calc(9s + var(--i)*.45s) linear infinite;animation-delay:calc(var(--i)*-.9s);background:#d8a9b2;border-radius:100% 0;position:absolute}
 
 /* ══════════ NAVEGAÇÃO ══════════ */
@@ -386,7 +386,7 @@ footer .creature--joaninha{top:44%;right:9%}
     <i style="--i:0"></i><i style="--i:1"></i><i style="--i:2"></i><i style="--i:3"></i><i style="--i:4"></i>
     <i style="--i:5"></i><i style="--i:6"></i><i style="--i:7"></i><i style="--i:8"></i><i style="--i:9"></i>
   </div>
-  <img class="opening-ramo" src="img/flor-ramo.png" alt="" aria-hidden="true">
+  <svg class="botanical opening-flower opening-flower--top-left" aria-hidden="true"><use href="#flor"/></svg>
   <svg class="creature creature--abelha" aria-hidden="true"><use href="#abelha"/></svg>
   <svg class="creature creature--joaninha" aria-hidden="true"><use href="#joaninha"/></svg>
   <svg class="creature creature--borboleta creature--extra-1" aria-hidden="true"><use href="#borboleta"/></svg>
