@@ -63,7 +63,7 @@ a{color:inherit;text-decoration:none}
 [data-reveal].revealed{opacity:1;transform:none}
 
 /* ══════════ TELA DE ABERTURA ══════════ */
-.opening{z-index:1000;background:radial-gradient(circle at 50% 40%,#fffaf7 0,#f9eeee 46%,#ead3d6);place-items:center;transition:opacity 1s,visibility 1s;display:grid;position:fixed;inset:0;overflow:hidden}
+.opening{z-index:1000;background:linear-gradient(rgba(255,250,245,.5),rgba(255,250,245,.5)),url(img/estampa.jpg) center/cover;place-items:center;transition:opacity 1s,visibility 1s;display:grid;position:fixed;inset:0;overflow:hidden}
 .opening:after{content:"";pointer-events:none;border:1px solid #b9986773;position:absolute;inset:18px}
 .opening--away{opacity:0;visibility:hidden}
 .opening-card{text-align:center;z-index:2;animation:1.4s both opening-in;position:relative}
@@ -90,7 +90,7 @@ a{color:inherit;text-decoration:none}
 .nav-toggle{color:var(--wine);background:transparent;border:0;display:none}
 
 /* ══════════ HERO (nome + foto) ══════════ */
-.hero{background:linear-gradient(105deg,#fffaf6 0 53%,#efdadd 53%);grid-template-columns:.86fr 1.14fr;align-items:center;gap:7vw;min-height:100svh;padding:110px max(6vw,2rem) 55px;display:grid;position:relative;overflow:hidden}
+.hero{background:linear-gradient(105deg,#fffaf6 0 53%,transparent 53%),url(img/estampa.jpg) center/cover;grid-template-columns:.86fr 1.14fr;align-items:center;gap:7vw;min-height:100svh;padding:110px max(6vw,2rem) 55px;display:grid;position:relative;overflow:hidden}
 .hero-copy{z-index:2;justify-self:end;position:relative}
 .hero-copy>.eyebrow{color:var(--rose)}
 .hero-copy>.script{margin:1.1rem 0 -1rem;font-size:2.2rem}
@@ -131,7 +131,7 @@ a{color:inherit;text-decoration:none}
 .celebration-flower{width:330px;color:var(--blush);position:absolute;bottom:-120px;right:-50px;transform:rotate(-20deg)}
 
 /* ══════════ GALERIA (fotografias) ══════════ */
-.gallery-section{background:#f1dfe1;padding:8rem 8vw 10rem;position:relative}
+.gallery-section{background:linear-gradient(rgba(255,250,245,.3),rgba(255,250,245,.3)),url(img/estampa.jpg) center/cover;padding:8rem 8vw 10rem;position:relative}
 .section-heading{text-align:center;max-width:620px;margin:0 auto 5rem}
 .section-heading .eyebrow{color:var(--rose)}
 .section-heading h2 em,.where-copy h2 em,.gift-section h2 em{color:var(--rose);font-style:italic}
@@ -202,7 +202,7 @@ a{color:inherit;text-decoration:none}
 .button--aguardando{opacity:.5;cursor:not-allowed;pointer-events:none}
 
 /* ══════════ RODAPÉ ══════════ */
-footer{text-align:center;color:var(--wine);background:#ead2d5;padding:8rem 2rem 5rem;position:relative;overflow:hidden}
+footer{text-align:center;color:var(--wine);background:linear-gradient(rgba(255,250,245,.4),rgba(255,250,245,.4)),url(img/estampa.jpg) center/cover;padding:8rem 2rem 5rem;position:relative;overflow:hidden}
 footer>.eyebrow{color:#986875}
 .footer-name{font:clamp(3.4rem,8vw,6.5rem)/1 var(--script);margin:1rem 0 0}
 .footer-age{font:1.4rem var(--serif);text-transform:uppercase;letter-spacing:.25em}
@@ -238,7 +238,7 @@ footer small{letter-spacing:.25em;margin-top:2rem;font-size:.57rem;display:block
   .nav-wrap nav{opacity:0;visibility:hidden;background:#fffaf6;flex-direction:column;gap:0;padding:.7rem;transition:all .25s;position:absolute;top:60px;left:12px;right:12px;transform:translateY(-10px);box-shadow:0 18px 50px #5a323d26}
   .nav-wrap nav.nav-open{opacity:1;visibility:visible;transform:none}
   .nav-wrap nav a{border-bottom:1px solid #f0dfe1;padding:1rem}
-  .hero{background:linear-gradient(#fffaf6 0 46%,#efdadd 46%);flex-direction:column;gap:3rem;min-height:auto;padding:115px 1.2rem 4rem;display:flex}
+  .hero{background:linear-gradient(#fffaf6 0 46%,transparent 46%),url(img/estampa.jpg) center top/cover;flex-direction:column;gap:3rem;min-height:auto;padding:115px 1.2rem 4rem;display:flex}
   .hero-copy{text-align:center;align-self:stretch}
   .hero-copy>.script{font-size:1.8rem}
   .hero h2{font-size:4.9rem}
