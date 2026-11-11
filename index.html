@@ -26,6 +26,7 @@
   --rose:#b77b88;   /* rosé  — palavras em destaque, script */
   --baby-pink:#e8a7b3; /* rosa-bebê — nome, rótulos e detalhes de destaque */
   --baby-pink-deep:#cf8298; /* rosa-bebê mais intenso — rótulos sobre fundo claro */
+  --button-pink:#c06b84; /* rosa fechado — botões (legível com texto branco) */
   --blush:#ead1d4;  /* blush — detalhes suaves, fundos de seção */
   --powder:#f5e6e5; /* pó de rosa — reservado */
   --paper:#fffaf5;  /* papel — fundo principal (creme) */
@@ -124,7 +125,8 @@ a{color:inherit;text-decoration:none}
 .section-number{font:7rem var(--serif);color:#b77b881a;position:absolute;top:6rem;left:6vw}
 .celebration-copy{text-align:center;max-width:650px}
 .celebration-copy .script{margin:0;font-size:2.5rem}
-.celebration h2,.where-copy h2{font:clamp(2.7rem,5.3vw,5rem)/1.03 var(--serif);color:var(--wine);margin:.4rem 0 1.8rem;font-weight:400}
+.celebration h2{font:clamp(2.7rem,5.3vw,5rem)/1.03 var(--serif);color:var(--baby-pink-deep);margin:.4rem 0 1.8rem;font-weight:400}
+.where-copy h2{font:clamp(2.7rem,5.3vw,5rem)/1.03 var(--serif);color:var(--baby-pink-deep);margin:.4rem 0 1.8rem;font-weight:400}
 .celebration-copy>p:not(.script){max-width:540px;margin:auto;font-size:.88rem;line-height:1.9}
 .ornament{color:var(--gold);margin-top:2rem;display:block}
 .celebration-flower{width:330px;color:var(--blush);position:absolute;bottom:-120px;right:-50px;transform:rotate(-20deg)}
@@ -143,7 +145,8 @@ a{color:inherit;text-decoration:none}
 .event-detail svg{width:20px;color:var(--gold);flex:none}
 .event-detail p{margin:0;font-size:.75rem;line-height:1.7}
 .event-detail strong{text-transform:uppercase;letter-spacing:.1em;font-size:.68rem}
-.button--dark{background:var(--wine);color:#fff;margin-top:1.2rem}
+.button--dark{background:var(--button-pink);color:#fff;margin-top:1.2rem}
+.button--dark:hover{background:#a8566d}
 .qr-card{text-align:center}
 .qr-frame{border:1px solid var(--gold);background:#fff;padding:14px}
 .qr-frame img{width:100%;display:block}
@@ -154,10 +157,12 @@ a{color:inherit;text-decoration:none}
 /* ══════════ CONFIRMAÇÃO DE PRESENÇA (xadrez rosa-bebê) ══════════ */
 .rsvp-section{background-color:#fff6f1;background-image:var(--gingham);background-size:28px 28px;color:var(--ink);text-align:center;padding:9rem 2rem}
 .rsvp-section>.eyebrow{color:var(--rose)}
-.rsvp-section>.script{margin:1rem 0;font-size:clamp(2.7rem,6vw,5rem)}
+.rsvp-section>.script{margin:1rem 0;font-size:clamp(2.7rem,6vw,5rem);color:var(--baby-pink-deep)}
 .rsvp-section h2{font:clamp(1.15rem,2vw,1.5rem)/1.6 var(--serif);letter-spacing:.04em;color:var(--wine);margin-bottom:2.2rem;font-weight:400}
-.button--light{color:#fff;background:var(--wine);border-color:var(--wine);box-shadow:0 12px 26px -10px #66394699}
-#btn-rsvp,#rsvp a.button{color:#fff;background:var(--wine);border-color:var(--wine);box-shadow:0 12px 26px -10px #66394699}
+.button--light{color:#fff;background:var(--button-pink);border-color:var(--button-pink);box-shadow:0 12px 26px -10px #c06b8499}
+.button--light:hover{background:#a8566d}
+#btn-rsvp,#rsvp a.button{color:#fff;background:var(--button-pink);border-color:var(--button-pink);box-shadow:0 12px 26px -10px #c06b8499}
+#btn-rsvp:hover,#rsvp a.button:hover{background:#a8566d}
 .invite-notice{text-transform:uppercase;letter-spacing:.14em;color:#986875;justify-content:center;align-items:center;gap:1rem;margin-top:3.5rem;font-size:.52rem;display:flex}
 .invite-notice i{background:#66394640;width:1px;height:22px}
 
